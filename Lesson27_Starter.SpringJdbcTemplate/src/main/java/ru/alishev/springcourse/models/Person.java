@@ -29,6 +29,10 @@ public class Person {
     private int age;
 
 
+    @Column(name="email")
+    @NotEmpty(message = "Email should not be empty")
+    @Email
+    private String email;
     public Person() {
 
     }
@@ -63,5 +67,21 @@ public class Person {
         this.age = age;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
