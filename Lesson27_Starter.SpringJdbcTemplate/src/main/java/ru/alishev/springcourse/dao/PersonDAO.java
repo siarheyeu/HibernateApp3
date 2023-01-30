@@ -44,12 +44,21 @@ public class PersonDAO {
         session.save(person);
     }
 
-
+    @Transactional
     public void update(int id, Person updatedPerson) {
+        Session session = sessionFactory.getCurrentSession();
+        Person personToBeUpdated = session.get(Person.class, id);
+
+        personToBeUpdated.setName(updatedPerson.getName());
+        personToBeUpdated.setAge(updatedPerson.getAge());
+        personToBeUpdated.setEmail(updatedPerson.getEmail());
 
     }
 
+    @Transactional
     public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        session.remove(session.get(Person.class, id));
 
     }
 }
