@@ -35,12 +35,15 @@ public class PersonDAO {
     @Transactional (readOnly = true)
     public Person show(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return null;
+        return session.get(Person.class, id);
     }
 
+    @Transactional
     public void save(Person person) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.save(person);
     }
+
 
     public void update(int id, Person updatedPerson) {
 
